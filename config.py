@@ -52,5 +52,7 @@ Supy2048 = conf.registerPlugin('Supy2048')
 # conf.registerGlobalValue(Supy2048, 'someConfigVariableName',
 #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
 
-
+conf.registerChannelValue(Supy2048, 'colors',
+    registry.SpaceSeparatedListOfStrings(["1", "2", "3", "4", "6"], _("""mIRC color codes to use. Default is 1 2 3 4 6.""")))
+ 
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:

@@ -99,6 +99,8 @@ update the current score by adding it the specified number of points
 	"""
 	c = self.board.getCell(x, y)
 	az = {}
+	tempclass = Supy2048(callbacks.Plugin)
+	colors = tempclass.getColors()
 	for i in range(1, int(math.log(self.board.goal(), 2))):
 	    az[2 ** i] = chr(i + 96)
 
@@ -117,7 +119,9 @@ update the current score by adding it the specified number of points
 	    s = ' 2k'
 	else:
 	    s = '%3d' % c
-	return s
+#	print str(colors[int(math.log(c, 2) % len(colors))])
+	return "\x03"+ str(colors[int(math.log(c, 2) % len(colors))])+s+"\x03"
+	# colors[] is a list of mIRC color codes.
 
 class Supy2048(callbacks.Plugin):
     """Add the help for "@plugin help Supy2048" here
@@ -130,6 +134,8 @@ class Supy2048(callbacks.Plugin):
 
 #    def showboardstatus(self, msg):
 #	return self.privategames[msg.prefix+"-"+irc.network].__str__(margins={'left': 0, 'top': 0, 'bottom': 0}).split("\n"):
+    def getColors(self):
+	return self.registryValue('colors')
 
     def checkgamefinished(self, gameID):
         if not (self.privategames[gameID].board.won() or self.privategames[gameID].board.canMove()):
@@ -149,6 +155,7 @@ class Supy2048(callbacks.Plugin):
 	self.privategames[msg.prefix+"-"+irc.network] = Game({})
    	for s in self.privategames[msg.prefix+"-"+irc.network].__str__(margins={'left': 0, 'top': 0, 'bottom': 0}).split("\n"):
 		irc.reply(s)
+		#print s
 
     startsingleplayer = wrap(startsingleplayer, ['private'])
  
