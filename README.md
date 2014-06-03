@@ -3,7 +3,7 @@
 
 The classic 2048 brought to the most important frontier: IRC. Requires Limnoria/Supybot (never tested the latter.)
 
-TODO: Multiplayer, high score tracking, colors, responsiveness/flood protection compromise.
+TODO: Multiplayer, high score tracking, responsiveness/flood protection compromise.
 
 IRC Channel: irc.freenode.net #2048-IRC
 
